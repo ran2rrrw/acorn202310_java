@@ -13,7 +13,7 @@ public class QuizMain {
 		 *  random 객체와 String[]객체를 활용
 		 */
 		String[] str = {"cherry", "apple", "banana", "melon", "7"};
-		
+		//랜덤한 숫자를 얻어낼 수 있는 객체 생성
 		Random ran = new Random();
 		int ranNum2 = ran.nextInt(str.length);
 		System.out.println(str[ranNum2]);
