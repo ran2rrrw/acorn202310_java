@@ -9,12 +9,23 @@ public class MainClass04 {
 		 * 2. 배열의 각각의 방(0, 1, 2 번) 에 Bike 객체를 생성해서 담아보세요.
 		 * 3. 반복문 for 를 이용해서 순서대로 각각의 방에 있는 Bike 객체의 ride() 메소드를 호출해 보세요.
 		 */
-		Bike[] b = new Bike[3];
-		b[0] = new Bike();
-		b[1] = new Bike();
-		b[2] = new Bike();
-		for(int i = 0; i<b.length;i++) {
-			b[i].ride();
+		
+		//1.
+		Bike[] bikes = new Bike[3];
+		//2.
+		bikes[0] = new Bike();
+		bikes[1] = new Bike();
+		bikes[2] = new Bike();
+		//3.  
+		for(int i = 0; i<bikes.length;i++) {
+			//bikes[i].ride();
+			Bike tmp = bikes[i];
+			tmp.ride();
+		}
+		
+		//위의 for 문 대신에 확장 for 문을 사용하면 아래와 같다
+		for (Bike tmp : bikes) {
+			tmp.ride();
 		}
 	}
 }
