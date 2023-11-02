@@ -1,3 +1,13 @@
+# 주석은 앞에 #을 붙이면 됩니다
+# 주석은 무시하는 line
+# .gitignore 는 git이 특정 파일이나 특정 폴더의 변경사항을 무시하도록 설정하는 파일 입니다
+# 프로젝트 환경설정, 빌드 결과물 등 추적이 필요없는 파일을 무시하도록 설정하는 것이 좋습니다.
+# 현재 commit 을 하는 개발환경과 이 commit 을 내려받아서 사용하는 개발환경은 다를 수 있기때문에
+# 가급적 설정파일은 제외하고 최소한의 내용만 commit 을 해서 공유를 해야 합니다.
+# 예를 들어 java17 에서 개발한 것을 java11 에서 사용할 수도 있고
+# 이클립스로 개발한 것을 인텔리j에서 사용할 수도 있는데 설정파일을 같이 commit 해서 올리면 사용이 곤란해 집니다.
+
+
 **/.metadata
 bin/
 tmp/
@@ -7,6 +17,7 @@ tmp/
 *~.nib
 local.properties
 .classpath
+.project
 .settings/
 .loadpath
 .recommenders
