@@ -44,6 +44,7 @@ public class OrderFrame extends JFrame implements ActionListener {
 
 		JButton addBtn = new JButton("추가");
 		JButton delBtn = new JButton("삭제");
+		JButton sBtn = new JButton("조회");
 
 		// 배치
 		JPanel panel = new JPanel();
@@ -55,16 +56,18 @@ public class OrderFrame extends JFrame implements ActionListener {
 		panel.add(input_q);
 		panel.add(addBtn);
 		panel.add(delBtn);
-
+		panel.add(sBtn);
 		add(panel, BorderLayout.NORTH);
 
 		// 버튼에 이벤트
 		addBtn.addActionListener(this);
 		delBtn.addActionListener(this);
+		sBtn.addActionListener(this);
 
 		// action command 설정
 		addBtn.setActionCommand("add");
 		delBtn.setActionCommand("delete");
+		sBtn.setActionCommand("subtotal");
 
 		// 테이블 생성
 		table = new JTable();
@@ -92,6 +95,7 @@ public class OrderFrame extends JFrame implements ActionListener {
 				// 선택된 포커스 clear
 				table.clearSelection();
 			}
+
 		});
 
 		// 테이블에 연결
@@ -143,12 +147,19 @@ public class OrderFrame extends JFrame implements ActionListener {
 		} else if (command.equals("delete")) {
 			int row = table.getSelectedRow();
 			if (row == -1) {
-				JOptionPane.showMessageDialog(this, "삭제할 row를 선택해 주세요,");
+				JOptionPane.showMessageDialog(this, "삭제할 row를 선택해 주세요.");
 				return;
 			}
 			OrderDto dto = list.get(row);
 			int id = dto.getId();
 			new OrderDao().delete(id);
+		} else if (command.equals("subtotal")) {
+			int selectedIndex = table.getSelectedRow();
+			// 모델로부터 현재 인덱스에 있는 Table 출력값을 얻어낸다
+			int p = (int) model.getValueAt(selectedIndex, 2);
+			int q = (int) model.getValueAt(selectedIndex, 3);
+			int subt = p * q;
+			JOptionPane.showMessageDialog(this, "총 가격은 " + subt + "원 입니다.");
 		}
 		refreshTable();
 	}
